@@ -201,8 +201,46 @@ export default function Index() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "0",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* YouTube background video */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/kZDhcCqvFPU?autoplay=1&mute=1&loop=1&playlist=kZDhcCqvFPU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=0&iv_load_policy=3&disablekb=1"
+            allow="autoplay; encrypted-media"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "177.78vh",
+              minWidth: "100%",
+              height: "56.25vw",
+              minHeight: "100%",
+              border: "none",
+              pointerEvents: "none",
+            }}
+            title="Hero background"
+          />
+          {/* Dark overlay */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to bottom, rgba(10,12,10,0.45) 0%, rgba(10,12,10,0.55) 60%, rgba(10,12,10,0.8) 100%)",
+            }}
+          />
+        </div>
+
         {/* Top: большое имя */}
         <div
           style={{
@@ -214,6 +252,8 @@ export default function Index() {
             maxWidth: "1200px",
             margin: "0 auto",
             width: "100%",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div
@@ -226,7 +266,7 @@ export default function Index() {
                 fontSize: "clamp(4.5rem, 14vw, 13rem)",
                 fontWeight: 400,
                 lineHeight: 0.92,
-                color: "var(--text-dark)",
+                color: "#ffffff",
                 letterSpacing: "-0.02em",
                 margin: 0,
               }}
@@ -237,13 +277,7 @@ export default function Index() {
 
           <div
             className="animate-fade-in-up delay-100"
-            style={{
-              opacity: 0,
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "baseline",
-              gap: "1.5rem",
-            }}
+            style={{ opacity: 0, overflow: "hidden" }}
           >
             <h1
               className="font-display"
@@ -254,11 +288,28 @@ export default function Index() {
                 color: "transparent",
                 letterSpacing: "-0.02em",
                 margin: 0,
-                WebkitTextStroke: "1.5px var(--text-dark)",
+                WebkitTextStroke: "1.5px rgba(255,255,255,0.7)",
               }}
             >
               Брайтвуд
             </h1>
+          </div>
+
+          <div
+            className="animate-fade-in-up delay-300"
+            style={{ opacity: 0, marginTop: "2rem" }}
+          >
+            <span
+              style={{
+                fontFamily: "'Cormorant', serif",
+                fontSize: "1.25rem",
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Тени прошлого, улики настоящего — истории, от которых не оторваться
+            </span>
           </div>
         </div>
 
@@ -267,8 +318,10 @@ export default function Index() {
           className="animate-fade-in delay-400"
           style={{
             opacity: 0,
-            borderTop: "1px solid var(--divider)",
+            borderTop: "1px solid rgba(255,255,255,0.15)",
             width: "100%",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div
@@ -286,21 +339,61 @@ export default function Index() {
             <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
               <span
                 style={{
-                  fontFamily: "'Cormorant', serif",
-                  fontSize: "1.125rem",
-                  fontStyle: "italic",
-                  color: "var(--text-mid)",
+                  fontFamily: "'Golos Text', sans-serif",
+                  fontSize: "0.6875rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.45)",
                 }}
               >
                 Остросюжетные детективы
               </span>
-              <div className="stat-badge">
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.8125rem",
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.45)",
+                  borderLeft: "2px solid var(--burgundy)",
+                  paddingLeft: "0.75rem",
+                }}
+              >
                 <Icon name="BookOpen" size={13} />
                 10 000+ читателей
               </div>
             </div>
 
-            <a href="#books" className="btn-primary" onClick={scrollToBooks}>
+            <a
+              href="#books"
+              onClick={scrollToBooks}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "rgba(255,255,255,0.1)",
+                color: "#ffffff",
+                fontFamily: "'Golos Text', sans-serif",
+                fontSize: "0.8125rem",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                padding: "0.875rem 2rem",
+                border: "1px solid rgba(255,255,255,0.25)",
+                textDecoration: "none",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+              }}
+            >
               Смотреть книги
               <Icon name="ArrowDown" size={14} />
             </a>
