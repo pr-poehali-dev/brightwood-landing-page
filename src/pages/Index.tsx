@@ -775,6 +775,152 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ── SOCIALS CTA ── */}
+      <section style={{ padding: "6rem 0", background: "var(--navy)" }}>
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "0 2rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            gap: "2rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Golos Text', sans-serif",
+              fontSize: "0.6875rem",
+              fontWeight: 600,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase" as const,
+              color: "var(--burgundy)",
+            }}
+          >
+            Следите за новинками
+          </span>
+
+          <h2
+            style={{
+              fontFamily: "'Cormorant', serif",
+              fontSize: "clamp(2rem, 5vw, 3.25rem)",
+              fontWeight: 500,
+              lineHeight: 1.15,
+              color: "#ffffff",
+              margin: 0,
+            }}
+          >
+            Присоединяйтесь<br />
+            <em style={{ color: "rgba(255,255,255,0.55)" }}>к читательскому сообществу</em>
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.7,
+              color: "rgba(255,255,255,0.5)",
+              maxWidth: "420px",
+            }}
+          >
+            Первыми узнавайте о новых книгах, закрытых главах и встречах с автором
+          </p>
+
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+            <a
+              href="#"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.625rem",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                fontFamily: "'Golos Text', sans-serif",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                letterSpacing: "0.06em",
+                padding: "0.875rem 1.75rem",
+                border: "1px solid rgba(255,255,255,0.15)",
+                textDecoration: "none",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              <TelegramIcon />
+              Telegram
+            </a>
+
+            <a
+              href="#"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.625rem",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                fontFamily: "'Golos Text', sans-serif",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                letterSpacing: "0.06em",
+                padding: "0.875rem 1.75rem",
+                border: "1px solid rgba(255,255,255,0.15)",
+                textDecoration: "none",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              <VkIcon />
+              ВКонтакте
+            </a>
+
+            <a
+              href="#"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.625rem",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                fontFamily: "'Golos Text', sans-serif",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                letterSpacing: "0.06em",
+                padding: "0.875rem 1.75rem",
+                border: "1px solid rgba(255,255,255,0.15)",
+                textDecoration: "none",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              <span style={{ fontFamily: "'Cormorant', serif", fontSize: "1rem", fontWeight: 600 }}>М</span>
+              Макс
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── FOOTER ── */}
       <footer className="site-footer">
         <div
