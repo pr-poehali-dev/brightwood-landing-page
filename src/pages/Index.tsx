@@ -193,132 +193,117 @@ export default function Index() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="hero-section">
+      <section
+        className="hero-section"
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "0",
+        }}
+      >
+        {/* Top: большое имя */}
         <div
           style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "6rem 2rem 3rem",
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: "0 2rem",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "4rem",
-            alignItems: "center",
+            width: "100%",
           }}
-          className="about-grid"
         >
-          <div>
-            <span
-              className="section-label animate-fade-in-up"
-              style={{ opacity: 0, display: "block" }}
-            >
-              Писатель · детектив
-            </span>
-
+          <div
+            className="animate-fade-in-up"
+            style={{ opacity: 0, overflow: "hidden" }}
+          >
             <h1
-              className="font-display animate-fade-in-up delay-100"
+              className="font-display"
               style={{
-                fontSize: "clamp(2.5rem, 7vw, 4.5rem)",
-                fontWeight: 500,
-                lineHeight: 1.1,
+                fontSize: "clamp(4.5rem, 14vw, 13rem)",
+                fontWeight: 400,
+                lineHeight: 0.92,
                 color: "var(--text-dark)",
-                marginTop: "1rem",
-                opacity: 0,
+                letterSpacing: "-0.02em",
+                margin: 0,
               }}
             >
               Лана
-              <br />
-              Брайтвуд
             </h1>
+          </div>
 
-            <div
-              className="animate-fade-in-up delay-200"
+          <div
+            className="animate-fade-in-up delay-100"
+            style={{
+              opacity: 0,
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "baseline",
+              gap: "1.5rem",
+            }}
+          >
+            <h1
+              className="font-display"
               style={{
-                marginTop: "1.5rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                opacity: 0,
+                fontSize: "clamp(4.5rem, 14vw, 13rem)",
+                fontWeight: 400,
+                lineHeight: 0.92,
+                color: "transparent",
+                letterSpacing: "-0.02em",
+                margin: 0,
+                WebkitTextStroke: "1.5px var(--text-dark)",
               }}
             >
-              <span className="accent-line" />
+              Брайтвуд
+            </h1>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          className="animate-fade-in delay-400"
+          style={{
+            opacity: 0,
+            borderTop: "1px solid var(--divider)",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "1200px",
+              margin: "0 auto",
+              padding: "1.5rem 2rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
               <span
                 style={{
                   fontFamily: "'Cormorant', serif",
                   fontSize: "1.125rem",
                   fontStyle: "italic",
                   color: "var(--text-mid)",
-                  letterSpacing: "0.02em",
                 }}
               >
                 Остросюжетные детективы
               </span>
-            </div>
-
-            <p
-              className="animate-fade-in-up delay-300"
-              style={{
-                marginTop: "1.75rem",
-                fontSize: "1.0625rem",
-                lineHeight: 1.7,
-                color: "var(--text-mid)",
-                maxWidth: "440px",
-                opacity: 0,
-              }}
-            >
-              Тени прошлого, улики настоящего —
-              <br />
-              истории, от которых не оторваться.
-            </p>
-
-            <div
-              className="animate-fade-in-up delay-400"
-              style={{
-                marginTop: "2.5rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "1.5rem",
-                flexWrap: "wrap",
-                opacity: 0,
-              }}
-            >
-              <a href="#books" className="btn-primary" onClick={scrollToBooks}>
-                Смотреть книги
-                <Icon name="ArrowDown" size={14} />
-              </a>
-
               <div className="stat-badge">
-                <Icon name="BookOpen" size={14} />
+                <Icon name="BookOpen" size={13} />
                 10 000+ читателей
               </div>
             </div>
-          </div>
 
-          <div
-            className="animate-fade-in delay-300"
-            style={{ position: "relative", opacity: 0 }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                inset: "-12px 12px 12px -12px",
-                border: "1px solid var(--divider)",
-                pointerEvents: "none",
-                zIndex: 0,
-              }}
-            />
-            <img
-              src={BOOKS_IMAGE}
-              alt="Книги Ланы Брайтвуд"
-              style={{
-                width: "100%",
-                aspectRatio: "4/3",
-                objectFit: "cover",
-                filter: "grayscale(30%) contrast(1.05)",
-                display: "block",
-                position: "relative",
-                zIndex: 1,
-              }}
-            />
+            <a href="#books" className="btn-primary" onClick={scrollToBooks}>
+              Смотреть книги
+              <Icon name="ArrowDown" size={14} />
+            </a>
           </div>
         </div>
       </section>

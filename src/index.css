@@ -175,7 +175,7 @@ body::before {
 /* Hero */
 .hero-section {
   background-color: var(--cream);
-  padding: 7rem 0 5rem;
+  padding: 0;
   position: relative;
   overflow: hidden;
 }
