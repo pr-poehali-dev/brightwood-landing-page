@@ -280,8 +280,8 @@ export default function Index() {
             style={{ opacity: 0, overflow: "hidden" }}
           >
             <h1
-              className="font-display"
               style={{
+                fontFamily: "'Playfair Display', serif",
                 fontSize: "clamp(4.5rem, 14vw, 13rem)",
                 fontWeight: 400,
                 lineHeight: 0.92,
