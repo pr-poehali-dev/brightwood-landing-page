@@ -11,21 +11,29 @@ const books = [
     title: "Город чужих",
     desc: "Детектив Алина Мирт распутывает клубок городских тайн, где каждый житель что-то скрывает. Мегаполис живёт двойной жизнью — и один неверный шаг может стать последним.",
     year: "2021",
+    cover: "https://cdn.poehali.dev/projects/69b9b278-6522-4ce8-bdf4-3977906c7c07/files/c05eecd1-3d57-4e9a-8519-993a670defbe.jpg",
+    accent: "#1A2A3A",
   },
   {
     title: "Убийство в Эллиотт Бэй",
     desc: "Туманный порт. Найденное тело на причале. И список подозреваемых, который растёт с каждым часом. Финал не оставит равнодушным никого.",
     year: "2022",
+    cover: "https://cdn.poehali.dev/projects/69b9b278-6522-4ce8-bdf4-3977906c7c07/files/88bf16df-986f-40d0-99d5-fe922e5726d6.jpg",
+    accent: "#1B3040",
   },
   {
     title: "Чёрный каталог",
     desc: "Секретный архив, способный уничтожить карьеры нескольких влиятельных людей, исчезает за одну ночь. Кто успел добраться до него первым — и почему это так опасно?",
     year: "2023",
+    cover: "https://cdn.poehali.dev/projects/69b9b278-6522-4ce8-bdf4-3977906c7c07/files/18d40d97-a7d8-4e66-9eb1-5c78d8d7d4d1.jpg",
+    accent: "#1C1010",
   },
   {
     title: "Убийственный торнадо",
     desc: "Небольшой город накрывает стихия. Когда непогода проходит, обнаруживают труп — но улики указывают на то, что природа здесь ни при чём.",
     year: "2024",
+    cover: "https://cdn.poehali.dev/projects/69b9b278-6522-4ce8-bdf4-3977906c7c07/files/8d647b68-aa55-477f-a07b-d0e364f01fff.jpg",
+    accent: "#1A1520",
   },
 ];
 
@@ -417,130 +425,212 @@ export default function Index() {
         </div>
       </section>
 
-      <hr className="section-divider" />
-
       {/* ── BOOKS ── */}
-      <section id="books" style={{ padding: "6rem 0", background: "#ffffff" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem" }}>
+      <section id="books">
+        {books.map((book, i) => (
           <div
+            key={book.title}
             style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              marginBottom: "3.5rem",
-              flexWrap: "wrap",
-              gap: "1rem",
+              minHeight: "100vh",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              position: "relative",
             }}
+            className="book-fullscreen"
           >
-            <div>
-              <span className="section-label">Библиография</span>
-              <h2 className="section-title" style={{ marginTop: "0.75rem" }}>
-                Книги
-              </h2>
-            </div>
-            <span
+            {/* Left: cover image */}
+            <div
               style={{
-                fontSize: "0.8125rem",
-                color: "var(--text-light)",
-                letterSpacing: "0.04em",
+                position: "relative",
+                overflow: "hidden",
+                background: book.accent,
               }}
             >
-              2021 — 2024
-            </span>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1.5px",
-              background: "var(--divider)",
-            }}
-            className="books-grid"
-          >
-            {books.map((book, i) => (
+              <img
+                src={book.cover}
+                alt={`Обложка книги «${book.title}»`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  display: "block",
+                  opacity: 0.85,
+                  mixBlendMode: "luminosity",
+                }}
+              />
+              {/* Dark overlay */}
               <div
-                key={book.title}
-                className="book-card"
-                style={{ background: "#fff" }}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: `linear-gradient(to right, transparent 60%, ${book.accent})`,
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
+
+            {/* Right: text */}
+            <div
+              style={{
+                background: book.accent,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                padding: "5rem 4rem",
+                position: "relative",
+              }}
+            >
+              {/* Book number watermark */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "3rem",
+                  right: "3rem",
+                  fontFamily: "'Cormorant', serif",
+                  fontSize: "7rem",
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  color: "rgba(255,255,255,0.06)",
+                  userSelect: "none",
+                  pointerEvents: "none",
+                }}
               >
+                0{i + 1}
+              </div>
+
+              <span
+                style={{
+                  fontFamily: "'Golos Text', sans-serif",
+                  fontSize: "0.6875rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase" as const,
+                  color: "rgba(255,255,255,0.4)",
+                  marginBottom: "1rem",
+                }}
+              >
+                Библиография · {book.year}
+              </span>
+
+              <h2
+                style={{
+                  fontFamily: "'Cormorant', serif",
+                  fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                  fontWeight: 500,
+                  lineHeight: 1.15,
+                  color: "#ffffff",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                {book.title}
+              </h2>
+
+              <div
+                style={{
+                  width: "48px",
+                  height: "1px",
+                  background: "var(--burgundy)",
+                  marginBottom: "1.75rem",
+                  opacity: 0.8,
+                }}
+              />
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.8,
+                  color: "rgba(255,255,255,0.65)",
+                  maxWidth: "420px",
+                  marginBottom: "2.5rem",
+                }}
+              >
+                {book.desc}
+              </p>
+
+              <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+                <a
+                  href="javascript:void(0)"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    background: "rgba(255,255,255,0.1)",
+                    color: "#ffffff",
+                    fontFamily: "'Golos Text', sans-serif",
+                    fontSize: "0.8125rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    padding: "0.875rem 1.75rem",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    textDecoration: "none",
+                    transition: "background 0.2s, border-color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.18)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                  }}
+                >
+                  Подробнее
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    fontSize: "0.8125rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    color: "rgba(255,255,255,0.5)",
+                    textDecoration: "none",
+                    borderBottom: "1px solid rgba(255,255,255,0.2)",
+                    paddingBottom: "2px",
+                    transition: "color 0.2s, border-color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "rgba(255,255,255,0.5)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                  }}
+                >
+                  Купить
+                  <Icon name="ExternalLink" size={11} />
+                </a>
+              </div>
+
+              {/* Scroll indicator (not last) */}
+              {i < books.length - 1 && (
                 <div
                   style={{
+                    position: "absolute",
+                    bottom: "2.5rem",
+                    left: "4rem",
                     display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    marginBottom: "1.25rem",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    color: "rgba(255,255,255,0.25)",
+                    fontSize: "0.6875rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase" as const,
                   }}
                 >
-                  <span className="book-number">0{i + 1}</span>
-                  <span
-                    style={{
-                      fontSize: "0.75rem",
-                      color: "var(--text-light)",
-                      letterSpacing: "0.06em",
-                    }}
-                  >
-                    {book.year}
-                  </span>
+                  <Icon name="ArrowDown" size={12} />
+                  следующая
                 </div>
-
-                <h3
-                  className="font-display"
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 500,
-                    color: "var(--text-dark)",
-                    marginBottom: "0.875rem",
-                    lineHeight: 1.25,
-                  }}
-                >
-                  {book.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.7,
-                    color: "var(--text-mid)",
-                    marginBottom: "1.75rem",
-                  }}
-                >
-                  {book.desc}
-                </p>
-
-                <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-                  <a
-                    href="javascript:void(0)"
-                    className="btn-ghost"
-                    style={{ fontSize: "0.75rem", padding: "0.6rem 1.25rem" }}
-                  >
-                    Подробнее
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase" as const,
-                      color: "var(--burgundy)",
-                      textDecoration: "none",
-                      padding: "0.6rem 0",
-                      borderBottom: "1px solid var(--burgundy)",
-                      transition: "opacity 0.2s",
-                    }}
-                  >
-                    Купить
-                    <Icon name="ExternalLink" size={11} />
-                  </a>
-                </div>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
-        </div>
+        ))}
       </section>
 
       <hr className="section-divider" />

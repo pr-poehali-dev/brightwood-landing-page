@@ -401,4 +401,17 @@ body::before {
   .reviews-grid {
     grid-template-columns: 1fr !important;
   }
+  .book-fullscreen {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .book-fullscreen > div:first-child {
+    height: 55vw;
+    min-height: 220px;
+    max-height: 340px;
+  }
+  .book-fullscreen > div:last-child {
+    padding: 2.5rem 1.5rem 3.5rem !important;
+    min-height: 60vh;
+  }
 }
